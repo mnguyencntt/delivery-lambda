@@ -26,6 +26,8 @@ public class DeliveryFunctionTest extends BaseTest {
     final DeliveryRequest deliveryRequest = JsonUtils.toObject(deliveryRequestJson, DeliveryRequest.class);
     ApiResponse submitDelivery = deliveryFunction.submitDelivery(deliveryRequest, createContext());
     System.out.println(submitDelivery);
+    ApiResponse findDelivery = deliveryFunction.findDelivery(DeliveryRequest.builder().deliveryId("2c8e98fa-7c3a-4ec1-8730-1bc8d22797a2").build(), createContext());
+    System.out.println(findDelivery);
     ApiResponse findDeliveries = deliveryFunction.findDeliveries(new DeliveryRequest(), createContext());
     System.out.println(findDeliveries);
   }
