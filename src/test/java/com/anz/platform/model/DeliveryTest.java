@@ -3,7 +3,7 @@ package com.anz.platform.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import com.anz.platform.model.Delivery;
 
 public class DeliveryTest {
@@ -28,7 +28,7 @@ public class DeliveryTest {
       assertEquals("12345", delivery.findValues()[0]);
       assertEquals("", delivery.findValues()[1]);
       assertEquals("", delivery.findValues()[2]);
-    } catch (IllegalArgumentException | IllegalAccessException e) {
+    } catch (IllegalArgumentException e) {
       fail();
     }
   }

@@ -5,11 +5,11 @@ import java.util.List;
 
 public enum DeliveryFunctionType {
   //
-  SEND("", "Send new delivery"),
+  CREATE("", "Send new delivery"),
   //
   UPDATE("", "Update delivery"),
   //
-  FIND("", "Find delivery by Id"),
+  FINDID("", "Find delivery by Id"),
   //
   FINDALL("", "Find all deliveries"),
   //

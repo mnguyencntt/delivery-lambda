@@ -3,7 +3,7 @@ package com.anz.platform.service;
 import java.util.List;
 import java.util.UUID;
 import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import com.anz.platform.config.AppConfigMock;
 import com.anz.platform.model.Delivery;
 

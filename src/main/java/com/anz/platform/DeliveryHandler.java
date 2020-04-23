@@ -23,9 +23,9 @@ public class DeliveryHandler implements RequestHandler<DeliveryRequest, ApiRespo
       }
 
       final DeliveryFunction function = new DeliveryFunction();
-      if (DeliveryFunctionType.SEND.equals(request.getFunctionType())) {
+      if (DeliveryFunctionType.CREATE.equals(request.getFunctionType())) {
         return function.submitDelivery(request, context);
-      } else if (DeliveryFunctionType.FIND.equals(request.getFunctionType())) {
+      } else if (DeliveryFunctionType.FINDID.equals(request.getFunctionType())) {
         return function.findDelivery(request, context);
       } else if (DeliveryFunctionType.FINDALL.equals(request.getFunctionType())) {
         return function.findDeliveries(request, context);
