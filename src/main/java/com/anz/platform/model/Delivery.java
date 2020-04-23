@@ -20,15 +20,21 @@ import lombok.ToString;
 public class Delivery extends BaseObject {
   private String id;
 
-  private String receiverUserId;
-
-  private String subject;
-  private String contentBody;
-
+  private String orderId;
   private String deliveryType;
-  private String amount;
-  private String status;
-  private String message;
+  private String deliveryMethod;
+  private String priceDelivery;
+  private String courierName;
+
+  private String pickupAddress;
+  private String deliveryAddress;
+
+  private String createdTime;
+  private String acceptedTime;
+  private String shippedTime;
+  private String deliveredTime;
+  private String pickupTime;
+
   private String request; // store request of API
 
   private String createdAt;
