@@ -55,6 +55,11 @@ public class DeliveryRequest {
     delivery.setDeliveryAddress(JsonUtils.toJson(deliveryAddress));
     delivery.setRequest(JsonUtils.toJson(this));
     delivery.setCreatedTime(DatetimeUtils.formatDateTime(LocalDateTime.now(), DDMMYYYY_HHMMSS));
+    if (DeliveryFunctionType.CREATE.equals(functionType)) {
+      delivery.persist(username);
+    } else {
+      delivery.update(username);
+    }
     return delivery;
   }
 

@@ -4,32 +4,34 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.anz.platform.config.AppConfig;
 import com.anz.platform.domain.ApiResponse;
 import com.anz.platform.domain.DbInfo;
 import com.anz.platform.domain.DeliveryRequest;
 import com.anz.platform.exception.DeliveryException;
 import com.anz.platform.model.Delivery;
 import com.anz.platform.util.Constants;
+import com.anz.platform.util.ObjectUtils;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Setter
 public class DeliveryFunction {
-  private AppConfig appConfig = new AppConfig();
-  private DbInfo dbInfo = appConfig.getDbInfo();
+  private DbInfo dbInfo;
+
+  public DeliveryFunction(final DbInfo dbInfo) {
+    this.dbInfo = dbInfo;
+  }
 
   /*
-   * submitDelivery
+   * createDelivery
    */
-  public ApiResponse submitDelivery(final DeliveryRequest request, final Context context) {
+  public ApiResponse createDelivery(final DeliveryRequest request, final Context context) {
     try {
       log.info("Request Data: {}", request);
       final DeliveryService deliveryService = new DeliveryService(dbInfo);
 
       final Delivery delivery = request.buildDelivery();
-      delivery.persist();
 
       final Integer updatedCount = deliveryService.persist(delivery);
       if (updatedCount > 0) {
@@ -53,7 +55,6 @@ public class DeliveryFunction {
       final DeliveryService deliveryService = new DeliveryService(dbInfo);
 
       final Delivery delivery = request.buildDelivery();
-      delivery.persist();
 
       final Integer updatedCount = deliveryService.updateById(delivery);
       if (updatedCount > 0) {
@@ -77,6 +78,9 @@ public class DeliveryFunction {
       final DeliveryService deliveryService = new DeliveryService(dbInfo);
       final Delivery delivery = deliveryService.findById(request.getDeliveryId(), Delivery.class);
       log.info("Response Data: {}", delivery);
+      if (ObjectUtils.isEmpty(delivery)) {
+        return ApiResponse.build(Constants.STATUS_404, null, Constants.DELIVERY_NOT_FOUND);
+      }
       return ApiResponse.build(Constants.STATUS_000, delivery, Constants.DELIVERY_FOUND);
     } catch (Exception e) {
       log.error(e.getMessage());
@@ -94,6 +98,9 @@ public class DeliveryFunction {
       final List<Delivery> deliveries = deliveryService.findAll(Delivery.class);
       deliveries.sort(Comparator.comparing(Delivery::getUpdatedAt));
       log.info("Response Data: {}", deliveries);
+      if (ObjectUtils.isEmpty(deliveries)) {
+        return ApiResponse.build(Constants.STATUS_404, Collections.emptyList(), Constants.DELIVERY_NOT_FOUND);
+      }
       return ApiResponse.build(Constants.STATUS_000, deliveries, Constants.DELIVERY_FOUND);
     } catch (Exception e) {
       log.error(e.getMessage());

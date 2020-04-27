@@ -38,7 +38,7 @@ public class DeliveryServiceTest extends BaseTest {
   public void testPersistUser() {
     final Delivery delivery = Delivery.builder().id("54321").orderId("OrderId12345").deliveryType("SHIPPING").priceDelivery("10$").courierName("GoGoVan").createdTime("24-04-2020 12:12:12").build();
     delivery.setRequest("request-json-format");
-    delivery.persist();
+    delivery.persist("MinhNguyen");
     assertEquals(new Integer(1), deliveryService.persist(delivery));
   }
 
@@ -46,7 +46,7 @@ public class DeliveryServiceTest extends BaseTest {
   public void testUpdateDelivery() {
     final Delivery delivery = Delivery.builder().id("12345").orderId("OrderId12345").deliveryType("SHIPPING").priceDelivery("10$").courierName("GoGoVan").createdTime("24-04-2020 12:12:12").build();
     delivery.setRequest("request-json-format");
-    delivery.persist();
+    delivery.persist("MinhNguyen");
     assertEquals(new Integer(1), deliveryService.updateById(delivery));
   }
 }
