@@ -49,7 +49,7 @@ public class DeliveryRequest {
 
   public Delivery buildDelivery() throws IllegalAccessException, InvocationTargetException {
     final Delivery delivery = new Delivery();
-    BeanUtils.copyProperties(this, delivery);
+    BeanUtils.copyProperties(delivery, this);
     delivery.setId(ObjectUtils.isEmpty(this.getDeliveryId()) ? UUID.randomUUID().toString() : this.getDeliveryId());
     delivery.setPickupAddress(JsonUtils.toJson(pickupAddress));
     delivery.setDeliveryAddress(JsonUtils.toJson(deliveryAddress));
