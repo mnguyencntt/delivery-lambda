@@ -36,7 +36,7 @@ public class DeliveryFunction {
       final Integer updatedCount = deliveryService.persist(delivery);
       if (updatedCount > 0) {
         log.info("Response Data: {}", delivery);
-        return ApiResponse.build(Constants.STATUS_000, delivery, Constants.DELIVERY_SEND_SUCCESS);
+        return ApiResponse.build(Constants.STATUS_000, delivery, Constants.DELIVERY_PERSIST_SUCCESS);
       } else {
         throw new DeliveryException(Constants.DELIVERY_PERSIST_FAILED);
       }
@@ -59,7 +59,7 @@ public class DeliveryFunction {
       final Integer updatedCount = deliveryService.updateById(delivery);
       if (updatedCount > 0) {
         log.info("Response Data: {}", delivery);
-        return ApiResponse.build(Constants.STATUS_000, delivery, Constants.DELIVERY_SEND_SUCCESS);
+        return ApiResponse.build(Constants.STATUS_000, delivery, Constants.DELIVERY_UPDATE_SUCCESS);
       } else {
         throw new DeliveryException(Constants.DELIVERY_PERSIST_FAILED);
       }

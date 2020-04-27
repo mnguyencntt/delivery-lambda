@@ -58,12 +58,12 @@ public final class Constants {
   public static final String DELIVERY_FUNCTION_NOT_SUPPORT = "DeliveryFunctionType '%s' does not support.";
   public static final String DELIVERY_PERSIST_SUCCESS = "Delivery persisted success.";
   public static final String DELIVERY_PERSIST_FAILED = "Delivery persisted fail.";
-  public static final String DELIVERY_SEND_SUCCESS = "Delivery sent success.";
-  public static final String DELIVERY_SEND_FAILED = "Delivery sent fail.";
+  public static final String DELIVERY_UPDATE_SUCCESS = "Delivery update success.";
+  public static final String DELIVERY_UPDATE_FAILED = "Delivery update fail.";
   public static final String DELIVERY_FOUND = "Delivery found.";
   public static final String DELIVERY_NOT_FOUND = "Delivery not found.";
-  public static final String DELIVERY_EXISTING = "User existing.";
-  public static final String DELIVERY_NOT_EXISTING = "User isn't existing.";
+  public static final String DELIVERY_EXISTING = "Delivery existing.";
+  public static final String DELIVERY_NOT_EXISTING = "Delivery isn't existing.";
   public static final String INITIALIZE_CONNECTION = "Initialize connection to MySQL with driver.";
   public static final String SUCCESSFUL_CONNECTION = "Connected to MySQL database. Now try to execute query by QueryRunner.";
 
