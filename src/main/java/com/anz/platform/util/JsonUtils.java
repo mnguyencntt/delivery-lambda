@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class JsonUtils {
-
-  private JsonUtils() {
+  JsonUtils() {
     throw new UnsupportedOperationException();
   }
 
